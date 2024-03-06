@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct182c4c304q1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1hxxc"]
+
+[node name="player" type="Node3D"]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="XRController3D2" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36859, 0, 0)
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRController3D2"]
+transform = Transform3D(0.111064, 0, 0, 0, 0.111064, 0, 0, 0, 0.111064, 0.647631, -0.0221613, 0)
+mesh = SubResource("SphereMesh_1hxxc")
+
+[node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRController3D"]
+transform = Transform3D(0.202972, 0, 0, 0, 0.202972, 0, 0, 0, 0.202972, 0.647631, -0.0221613, 0)
+mesh = SubResource("SphereMesh_1hxxc")
