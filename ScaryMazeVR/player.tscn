@@ -9,16 +9,17 @@
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 
 [node name="XRController3D2" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36859, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.448153, 0, 0)
 tracker = &"left_hand"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRController3D2"]
-transform = Transform3D(0.111064, 0, 0, 0, 0.111064, 0, 0, 0, 0.111064, 0.647631, -0.0221613, 0)
+transform = Transform3D(0.111835, 0, 0, 0, 0.111835, 0, 0, 0, 0.111835, 0, 0, 0)
 mesh = SubResource("SphereMesh_1hxxc")
 
 [node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.411959, 0, 0)
 tracker = &"right_hand"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRController3D"]
-transform = Transform3D(0.202972, 0, 0, 0, 0.202972, 0, 0, 0, 0.202972, 0.647631, -0.0221613, 0)
+transform = Transform3D(0.202972, 0, 0, 0, 0.202972, 0, 0, 0, 0.202972, 0, 0, 0)
 mesh = SubResource("SphereMesh_1hxxc")
