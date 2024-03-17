@@ -1,19 +1,86 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv1kejfjhglol"]
+[gd_scene load_steps=16 format=3 uid="uid://bv1kejfjhglol"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_eej4n"]
-[ext_resource type="PackedScene" uid="uid://ct182c4c304q1" path="res://player.tscn" id="1_yod0y"]
+[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="2_mlm5x"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="4_3mwn7"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="5_gbpo6"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="6_joc5y"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="7_w4a7b"]
+[ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/greyFloor.png" id="8_n3ffn"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_hv8dq"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_k8j4q"]
 
-[node name="world" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjtvg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8bx5c"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fggho"]
+sky_material = SubResource("ProceduralSkyMaterial_8bx5c")
+
+[sub_resource type="Environment" id="Environment_4sfj2"]
+background_mode = 2
+sky = SubResource("Sky_fggho")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekrax"]
+albedo_texture = ExtResource("8_n3ffn")
+uv1_scale = Vector3(60, 60, 60)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_byj1i"]
+material = SubResource("StandardMaterial3D_ekrax")
+size = Vector2(300, 300)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nyn4o"]
+size = Vector3(100, 1, 100)
+
+[node name="main" type="Node3D"]
 script = ExtResource("1_eej4n")
 
-[node name="player" parent="." instance=ExtResource("1_yod0y")]
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.8171)
-mesh = SubResource("BoxMesh_hv8dq")
+[node name="Camera" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11398, 3.93018, -7.8171)
-mesh = SubResource("BoxMesh_hv8dq")
+[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/LeftController" instance=ExtResource("2_mlm5x")]
+
+[node name="RightController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/RightController" instance=ExtResource("4_3mwn7")]
+
+[node name="MovementDirect" parent="XROrigin3D/RightController/RightHand" instance=ExtResource("5_gbpo6")]
+
+[node name="MovementTurn" parent="XROrigin3D/RightController/RightHand" instance=ExtResource("6_joc5y")]
+turn_mode = 2
+
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("7_w4a7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/PlayerBody"]
+mesh = SubResource("CapsuleMesh_k8j4q")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody"]
+shape = SubResource("CapsuleShape3D_pjtvg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 97, -85)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4sfj2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_byj1i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_nyn4o")

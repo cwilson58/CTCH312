@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct182c4c304q1"]
+[gd_scene load_steps=3 format=3 uid="uid://ct182c4c304q1"]
+
+[ext_resource type="Script" path="res://basic_player.gd" id="1_vdlwp"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1hxxc"]
 
 [node name="player" type="Node3D"]
+script = ExtResource("1_vdlwp")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
