@@ -1,73 +1,44 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv1kejfjhglol"]
+[gd_scene load_steps=13 format=3 uid="uid://bv1kejfjhglol"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_eej4n"]
-[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="2_mlm5x"]
-[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="4_3mwn7"]
-[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="5_gbpo6"]
-[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="6_joc5y"]
-[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="7_w4a7b"]
+[ext_resource type="PackedScene" uid="uid://di3vke8xgrrl1" path="res://characters/player.tscn" id="3_8np8d"]
+[ext_resource type="PackedScene" uid="uid://bug6eo7vienko" path="res://characters/monster.tscn" id="4_odpet"]
 [ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/greyFloor.png" id="8_n3ffn"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_k8j4q"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjtvg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8bx5c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_fggho"]
+[sub_resource type="Sky" id="Sky_bda4w"]
 sky_material = SubResource("ProceduralSkyMaterial_8bx5c")
 
 [sub_resource type="Environment" id="Environment_4sfj2"]
 background_mode = 2
-sky = SubResource("Sky_fggho")
+sky = SubResource("Sky_bda4w")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekrax"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heo84"]
 albedo_texture = ExtResource("8_n3ffn")
 uv1_scale = Vector3(60, 60, 60)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_byj1i"]
-material = SubResource("StandardMaterial3D_ekrax")
+material = SubResource("StandardMaterial3D_heo84")
 size = Vector2(300, 300)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nyn4o"]
-size = Vector3(100, 1, 100)
+size = Vector3(300, 1, 300)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rimya"]
+size = Vector3(10, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yukml"]
+size = Vector3(10, 10, 1)
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_eej4n")
 
-[node name="XROrigin3D" type="XROrigin3D" parent="."]
-
-[node name="Camera" type="XRCamera3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
-
-[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
-tracker = &"left_hand"
-
-[node name="LeftHand" parent="XROrigin3D/LeftController" instance=ExtResource("2_mlm5x")]
-
-[node name="RightController" type="XRController3D" parent="XROrigin3D"]
-tracker = &"right_hand"
-
-[node name="RightHand" parent="XROrigin3D/RightController" instance=ExtResource("4_3mwn7")]
-
-[node name="MovementDirect" parent="XROrigin3D/RightController/RightHand" instance=ExtResource("5_gbpo6")]
-
-[node name="MovementTurn" parent="XROrigin3D/RightController/RightHand" instance=ExtResource("6_joc5y")]
-turn_mode = 2
-
-[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("7_w4a7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/PlayerBody"]
-mesh = SubResource("CapsuleMesh_k8j4q")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/PlayerBody"]
-shape = SubResource("CapsuleShape3D_pjtvg")
+[node name="Player" parent="." instance=ExtResource("3_8np8d")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 97, -85)
@@ -84,3 +55,16 @@ mesh = SubResource("PlaneMesh_byj1i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_nyn4o")
+
+[node name="Monster" parent="." instance=ExtResource("4_odpet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 11)
+
+[node name="Wall" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 7.5)
+mesh = SubResource("BoxMesh_rimya")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 7.5)
+shape = SubResource("BoxShape3D_yukml")

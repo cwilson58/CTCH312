@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://di3vke8xgrrl1"]
+
+[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_biufw"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="2_y7hhr"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_grfjy"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_rrn2f"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_kigyv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_odewf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4dtli"]
+
+[node name="Player" type="XROrigin3D" groups=["monster_visible"]]
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+
+[node name="Camera" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="LeftController" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="LeftController" instance=ExtResource("1_biufw")]
+
+[node name="RightController" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="RightController" instance=ExtResource("2_y7hhr")]
+
+[node name="MovementDirect" parent="RightController/RightHand" instance=ExtResource("3_grfjy")]
+
+[node name="MovementTurn" parent="RightController/RightHand" instance=ExtResource("4_rrn2f")]
+turn_mode = 2
+
+[node name="PlayerBody" parent="." instance=ExtResource("5_kigyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerBody"]
+mesh = SubResource("CapsuleMesh_odewf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody"]
+shape = SubResource("CapsuleShape3D_4dtli")
