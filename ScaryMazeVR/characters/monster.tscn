@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/Monster.gd" id="1_j42wl"]
 [ext_resource type="AudioStream" uid="uid://dorcq7cvye13" path="res://assets/sfx/dragon-roar-96996.mp3" id="2_3m8rl"]
-[ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/greyFloor.png" id="2_smtus"]
+[ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/materials/greyFloor.png" id="2_smtus"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lxoqb"]
 height = 3.0

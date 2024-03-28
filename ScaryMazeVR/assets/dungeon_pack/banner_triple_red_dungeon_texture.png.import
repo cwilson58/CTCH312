@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cts7i8ni3d8l4"
-path.s3tc="res://.godot/imported/greyFloor.png-7cb421a4279ce68526793d962334b64d.s3tc.ctex"
+uid="uid://cgde1jpofgjpp"
+path.s3tc="res://.godot/imported/banner_triple_red_dungeon_texture.png-f8a6af926d7f80b4c8b1d2161f9404fa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/greyFloor.png"
-dest_files=["res://.godot/imported/greyFloor.png-7cb421a4279ce68526793d962334b64d.s3tc.ctex"]
+source_file="res://assets/dungeon_pack/banner_triple_red_dungeon_texture.png"
+dest_files=["res://.godot/imported/banner_triple_red_dungeon_texture.png-f8a6af926d7f80b4c8b1d2161f9404fa.s3tc.ctex"]
 
 [params]
 
