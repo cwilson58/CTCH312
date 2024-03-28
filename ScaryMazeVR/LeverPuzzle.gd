@@ -12,6 +12,9 @@ func _ready():
 func check_correct() -> void:
 	if(code == current_attempt):
 		code_correct.emit()
+		$SuccessAudio.play()
+	else:
+		$FailAudio.play()
 
 func _on_lever_snap_01_position_changed(position : int) -> void:
 	if(position > 0):

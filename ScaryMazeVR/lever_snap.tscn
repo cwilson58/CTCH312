@@ -60,7 +60,6 @@ mesh = SubResource("2")
 surface_material_override/0 = ExtResource("1")
 
 [node name="LeverOrigin" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="InteractableLever" type="Node3D" parent="LeverOrigin"]
 script = ExtResource("2")
