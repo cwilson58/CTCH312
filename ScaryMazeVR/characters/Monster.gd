@@ -5,10 +5,18 @@ class_name Monster extends CharacterBody3D
 @onready var light = $SpotLight3D
 var max_distance_squared
 var max_angle
+var target_velocity = Vector3.ZERO
 
 func _ready():
 	max_distance_squared = light.spot_range*light.spot_range
 	max_angle = deg_to_rad(light.spot_angle)
+
+func _physics_process(delta):
+	# force monster to fallow the laws of gravity
+	if not is_on_floor():
+		target_velocity.y = target_velocity.y - (9.81 * delta)
+	velocity = target_velocity
+	move_and_slide()
 
 func _process(_delta):
 	light.light_color = Color.WHITE

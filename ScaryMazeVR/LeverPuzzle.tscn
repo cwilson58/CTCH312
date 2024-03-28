@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx36jqdjeg750"]
+
+[ext_resource type="PackedScene" uid="uid://dxgv8axd355m7" path="res://lever_snap.tscn" id="1_8k8qa"]
+[ext_resource type="Script" path="res://LeverPuzzle.gd" id="1_i2qh7"]
+
+[node name="LeverPuzzle" type="Node3D"]
+script = ExtResource("1_i2qh7")
+
+[node name="LeverSnap01" parent="." instance=ExtResource("1_8k8qa")]
+
+[node name="LeverSnap02" parent="." instance=ExtResource("1_8k8qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+
+[node name="LeverSnap03" parent="." instance=ExtResource("1_8k8qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+
+[node name="LeverSnap04" parent="." instance=ExtResource("1_8k8qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, 0)
+
+[connection signal="position_changed" from="LeverSnap01" to="." method="_on_lever_snap_01_position_changed"]
+[connection signal="position_changed" from="LeverSnap02" to="." method="_on_lever_snap_02_position_changed"]
+[connection signal="position_changed" from="LeverSnap03" to="." method="_on_lever_snap_03_position_changed"]
+[connection signal="position_changed" from="LeverSnap04" to="." method="_on_lever_snap_04_position_changed"]
