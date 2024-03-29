@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bh4k4mwxy2t3c"]
+[gd_scene load_steps=2 format=3 uid="uid://bh4k4mwxy2t3c"]
+
+[ext_resource type="Script" path="res://game_ui.gd" id="1_288um"]
 
 [node name="GameUi" type="CanvasLayer"]
+script = ExtResource("1_288um")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -50,3 +53,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Start Game
 "
+
+[connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

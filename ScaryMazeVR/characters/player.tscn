@@ -19,6 +19,7 @@ height = 0.5
 
 [node name="Camera" type="XRCamera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+current = true
 
 [node name="LeftController" type="XRController3D" parent="."]
 tracker = &"left_hand"

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cs6dxfu5owcgo" path="res://lever_smooth.tscn" id="6_euaia"]
 [ext_resource type="PackedScene" uid="uid://bx36jqdjeg750" path="res://LeverPuzzle.tscn" id="7_pn00w"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="8_jy8vg"]
-[ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/greyFloor.png" id="8_n3ffn"]
+[ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/materials/greyFloor.png" id="8_n3ffn"]
 [ext_resource type="PackedScene" uid="uid://bh4k4mwxy2t3c" path="res://game_ui.tscn" id="9_t86to"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8bx5c"]
