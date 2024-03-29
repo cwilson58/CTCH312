@@ -30,4 +30,5 @@ light_energy = 5.0
 spot_angle = 57.46
 
 [node name="Roar" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0542281, -0.0406306, 0.0163279)
 stream = ExtResource("2_3m8rl")

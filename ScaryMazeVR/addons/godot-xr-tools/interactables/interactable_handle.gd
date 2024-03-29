@@ -26,6 +26,8 @@ extends XRToolsPickable
 # Handle origin spatial node
 @onready var handle_origin: Node3D = get_parent()
 
+# signals
+signal lever_dropped(transform : Transform3D)
 
 # Add support for is_xr_class on XRTools classes
 func is_xr_class(name : String) -> bool:
@@ -76,7 +78,7 @@ func let_go(by: Node3D, _p_linear_velocity: Vector3, _p_angular_velocity: Vector
 
 	# Snap the handle back to the origin
 	transform = Transform3D.IDENTITY
-
+	lever_dropped.emit(handle_origin.global_transform)
 
 # Check handle configurationv
 func _get_configuration_warnings() -> PackedStringArray:
