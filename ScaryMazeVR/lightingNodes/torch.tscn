@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn2gt31383ctp"]
+[gd_scene load_steps=4 format=3 uid="uid://cn2gt31383ctp"]
 
 [ext_resource type="PackedScene" uid="uid://bp8mj25rt3i00" path="res://assets/dungeon_pack/torch_lit.gltf.glb" id="1_44rwk"]
+[ext_resource type="AudioStream" uid="uid://b1nwyr6a0uqcj" path="res://assets/sfx/fireplace-fire-crackling-loop-123930.mp3" id="2_cm3th"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bdpk2"]
 points = PackedVector3Array(-0.275142, 0.619556, -0.0457852, -0.275142, 0.619556, 0.0457312, -0.211473, 0.646555, -0.0457852, -0.0457851, 0.619556, -0.275142, -0.152599, 0.490954, -0.152599, -0.19456, 0.284111, -0.0457852, -0.0363588, -0.384467, -5.39124e-05, -0.152599, 0.490954, 0.152545, -0.0457851, 0.619556, 0.275142, -0.211473, 0.646555, 0.0457312, -0.19456, 0.284111, 0.0457312, 0, 0.730747, -5.39124e-05, -0.0457851, 0.646555, -0.211473, 0.0457312, 0.619556, -0.275142, 0, -0.384467, -0.0363588, -0.0457851, 0.284111, -0.19456, 0, -0.395046, -5.39124e-05, 0, -0.384467, 0.0363049, -0.0457851, 0.284111, 0.194506, 0.0457312, 0.619556, 0.275142, -0.0457851, 0.646555, 0.211366, 0.211366, 0.646555, 0.0457312, 0.211366, 0.646555, -0.0457852, 0.0457312, 0.646555, -0.211473, 0.0457312, 0.646555, 0.211366, 0.275142, 0.619556, -0.0457852, 0.152545, 0.490954, -0.152599, 0.0457312, 0.284111, -0.19456, 0.0363049, -0.384467, -5.39124e-05, 0.0457312, 0.284111, 0.194506, 0.152545, 0.490954, 0.152545, 0.275142, 0.619556, 0.0457312, 0.194506, 0.284111, -0.0457852, 0.194506, 0.284111, 0.0457312)
@@ -20,5 +21,12 @@ light_color = Color(0.92549, 0.411765, 0.192157, 1)
 light_energy = 2.0
 light_volumetric_fog_energy = 2.0
 shadow_enabled = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_cm3th")
+volume_db = -20.0
+autoplay = true
+max_distance = 10.0
+panning_strength = 3.0
 
 [editable path="torch_lit_gltf"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bv1kejfjhglol"]
+[gd_scene load_steps=28 format=3 uid="uid://bv1kejfjhglol"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_eej4n"]
 [ext_resource type="PackedScene" uid="uid://di3vke8xgrrl1" path="res://characters/player.tscn" id="3_8np8d"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dlv8l2wvxnp78" path="res://interactables/chest.tscn" id="11_0fpvo"]
 [ext_resource type="PackedScene" uid="uid://cn2gt31383ctp" path="res://lightingNodes/torch.tscn" id="12_4o75x"]
 [ext_resource type="PackedScene" uid="uid://dgxiwyc7so4s" path="res://lightingNodes/candle.tscn" id="13_x6blf"]
+[ext_resource type="PackedScene" uid="uid://b7pjbode06apm" path="res://interactables/torchHolder.tscn" id="14_j7lbm"]
+[ext_resource type="PackedScene" uid="uid://cn5x5nkuvytc0" path="res://interactables/torchHeld.tscn" id="15_gwcb0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8bx5c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -145,3 +147,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.82178, 0.966294, -0.
 
 [node name="Candle2" parent="." instance=ExtResource("13_x6blf")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.82178, 0.966294, 0.376895)
+
+[node name="TorchHolder" parent="." instance=ExtResource("14_j7lbm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.70108, 0.991295, -0.00737047)
+
+[node name="Torch3" parent="." instance=ExtResource("15_gwcb0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.30406, 1.38521, 0)

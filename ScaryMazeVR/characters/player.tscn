@@ -39,6 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.656178, -1.22545)
 shape = SubResource("BoxShape3D_sp04e")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera"]
+visible = false
 light_color = Color(1, 1, 0.745098, 1)
 light_energy = 1.5
 light_volumetric_fog_energy = 1.5
