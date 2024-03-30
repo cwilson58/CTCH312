@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bslpqwa1b5hmj"]
+[gd_scene load_steps=13 format=3 uid="uid://bslpqwa1b5hmj"]
 
 [ext_resource type="Material" uid="uid://3igsth4mwvdw" path="res://assets/rubber_wall.tres" id="1_c0wjs"]
 [ext_resource type="Script" path="res://maps/game_level.gd" id="1_w3p8n"]
 [ext_resource type="MeshLibrary" uid="uid://cdwk3b8j70rqi" path="res://assets/library/map_assets_collisions.tres" id="2_h52yl"]
 [ext_resource type="Environment" uid="uid://bk6g6m63ia8i1" path="res://maps/spooky_fog_environment.tres" id="3_ew2s3"]
 [ext_resource type="PackedScene" uid="uid://di3vke8xgrrl1" path="res://characters/player.tscn" id="4_peacl"]
+[ext_resource type="PackedScene" uid="uid://bug6eo7vienko" path="res://characters/monster.tscn" id="6_rclpb"]
+[ext_resource type="Script" path="res://maps/PathFollow3D02.gd" id="7_mgbmg"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bysir"]
 material = ExtResource("1_c0wjs")
@@ -12,6 +14,27 @@ size = Vector2(128, 128)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yhm0e"]
 points = PackedVector3Array(-64, 0, -64, -64, 0, 64, 64, 0, -64, 64, 0, 64)
+
+[sub_resource type="Curve3D" id="Curve3D_mstgc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -24.9838, 0, -16.1521, 0, 0, 0, 0, 0, 0, -16.8757, 0, -16.3826, 0, 0, 0, 0, 0, 0, -17, 0, 3, 0, 0, 0, 0, 0, 0, -25, 0, 3, 0, 0, 0, 0, 0, 0, -24.9838, 0, -16.1521),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_nkutl"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -32.187, 0, 30.8069, 0, 0, 0, 0, 0, 0, -19.5815, 0, 31.2225, 0, 0, 0, 0, 0, 0, -19.5815, 0, 51.1697, 0, 0, 0, 0, 0, 0, -32.187, 0, 51.1697, 0, 0, 0, 0, 0, 0, -32.187, 0, 30.8069),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_d6a10"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10.9737, 0, -44.2319, 0, 0, 0, 0, 0, 0, -1.71276, 0, -44.2319, 0, 0, 0, 0, 0, 0, -2.23154, 0, -35.507, 0, 0, 0, 0, 0, 0, 14.0863, 0, -34.9883, 0, 0, 0, 0, 0, 0, 13.0959, 0, -29.1874, 0, 0, 0, 0, 0, 0, 9.51166, 0, -26.4049, 0, 0, 0, 0, 0, 0, 4.70119, 0, -26.0747, 0, 0, 0, 0, 0, 0, -3.03328, 0, -28.3857, 0, 0, 0, 0, 0, 0, -2.37302, 0, -33.6677, 0, 0, 0, 0, 0, 0, 11.4453, 0, -35.9786, 0, 0, 0, 0, 0, 0, 12.2942, 0, -39.2799, 0, 0, 0, 0, 0, 0, 10.9737, 0, -44.2319),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
 
 [node name="GameLevel" type="Node3D"]
 script = ExtResource("1_w3p8n")
@@ -53,3 +76,42 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("ConvexPolygonShape3D_yhm0e")
+
+[node name="Monster01" parent="." instance=ExtResource("6_rclpb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.0597, 2.69978, -40.4267)
+
+[node name="Monster04" parent="." instance=ExtResource("6_rclpb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.5521, 2.69978, 59.477)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+curve = SubResource("Curve3D_mstgc")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.0397412, 0, -0.999209, 0, 1, 0, 0.999209, 0, 0.0397412, -24.9193, 0, -16.5692)
+script = ExtResource("7_mgbmg")
+
+[node name="Monster02" parent="Path3D/PathFollow3D" instance=ExtResource("6_rclpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+curve = SubResource("Curve3D_nkutl")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
+transform = Transform3D(-0.032949, 0, -0.999455, 0, 1, 0, 0.999455, 0, -0.032949, -32.187, 0, 30.8069)
+script = ExtResource("7_mgbmg")
+
+[node name="Monster03" parent="Path3D2/PathFollow3D" instance=ExtResource("6_rclpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Path3D3" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+curve = SubResource("Curve3D_d6a10")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D3"]
+transform = Transform3D(-4.37112e-08, 0, 0.999996, 0, 1, 0, -0.999996, 0, -4.37112e-08, 10.9737, 0, -44.2319)
+script = ExtResource("7_mgbmg")
+
+[node name="Monster05" parent="Path3D3/PathFollow3D" instance=ExtResource("6_rclpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
