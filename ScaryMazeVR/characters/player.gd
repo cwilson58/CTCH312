@@ -1,4 +1,4 @@
-extends XROrigin3D
+class_name VRPlayer extends XROrigin3D
 
 var _interact_event := InputEventAction.new()
 
