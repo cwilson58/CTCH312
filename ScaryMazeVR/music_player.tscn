@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3suyxntevvjp"]
+
+[ext_resource type="Script" path="res://music_player.gd" id="1_15xu8"]
+[ext_resource type="AudioStream" uid="uid://dut17ij7pt7x4" path="res://music/caves-of-dawn-10376.mp3" id="1_mofoj"]
+[ext_resource type="AudioStream" uid="uid://cnuewkuw3hxdb" path="res://music/creepy-echo-piano-2-156119.mp3" id="2_0kpe4"]
+[ext_resource type="AudioStream" uid="uid://braj07r0lvvck" path="res://music/scary-spooky-creepy-horror-ambient-dark-piano-cinematic-115052.mp3" id="3_t43t1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e2t27"]
+streams_count = 3
+stream_0/stream = ExtResource("1_mofoj")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_0kpe4")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_t43t1")
+stream_2/weight = 1.0
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamRandomizer_e2t27")
+bus = &"Muisc"
+script = ExtResource("1_15xu8")

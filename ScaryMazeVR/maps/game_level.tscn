@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bslpqwa1b5hmj"]
+[gd_scene load_steps=16 format=3 uid="uid://bslpqwa1b5hmj"]
 
 [ext_resource type="Material" uid="uid://3igsth4mwvdw" path="res://assets/rubber_wall.tres" id="1_c0wjs"]
 [ext_resource type="Script" path="res://maps/game_level.gd" id="1_w3p8n"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://maps/PathFollow3D02.gd" id="7_mgbmg"]
 [ext_resource type="PackedScene" uid="uid://bx36jqdjeg750" path="res://LeverPuzzle.tscn" id="8_v1rri"]
 [ext_resource type="PackedScene" uid="uid://bolsy0muwtool" path="res://interactables/door.tscn" id="9_urgb1"]
+[ext_resource type="PackedScene" uid="uid://dlv8l2wvxnp78" path="res://interactables/chest.tscn" id="10_80pdf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bysir"]
 material = ExtResource("1_c0wjs")
@@ -142,6 +143,9 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -24.6639
 
 [node name="LeverPuzzle03" parent="." instance=ExtResource("8_v1rri")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.15135, 2.73444, -47.3608)
+
+[node name="Chest" parent="." instance=ExtResource("10_80pdf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 57.4254, 1.01354, -54.7837)
 
 [connection signal="code_correct" from="SpawnPuzzle" to="SpawnDoor" method="_on_puzzle_solved"]
 [connection signal="code_correct" from="LeverPuzzle01" to="Door01" method="_on_puzzle_solved"]
