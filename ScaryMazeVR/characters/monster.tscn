@@ -1,27 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bug6eo7vienko"]
+[gd_scene load_steps=5 format=3 uid="uid://bug6eo7vienko"]
 
 [ext_resource type="Script" path="res://characters/Monster.gd" id="1_j42wl"]
 [ext_resource type="AudioStream" uid="uid://dorcq7cvye13" path="res://assets/sfx/dragon-roar-96996.mp3" id="2_3m8rl"]
-[ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/materials/greyFloor.png" id="2_smtus"]
+[ext_resource type="PackedScene" uid="uid://d1r4dkdxe86v8" path="res://assets/monsters/skin_reaver.tscn" id="2_reukq"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lxoqb"]
-height = 3.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ptx5m"]
-height = 3.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0agl"]
-albedo_texture = ExtResource("2_smtus")
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwc3h"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Monster" type="CharacterBody3D"]
 script = ExtResource("1_j42wl")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_lxoqb")
+[node name="skin_reaver" parent="." instance=ExtResource("2_reukq")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_ptx5m")
-surface_material_override/0 = SubResource("StandardMaterial3D_u0agl")
+[node name="CollisionShape3D" parent="skin_reaver/Armature_001/GeneralSkeleton/parasiteZombie/StaticBody3D" index="0"]
+disabled = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00136817, 0)
@@ -34,3 +27,10 @@ spot_angle = 57.46
 [node name="Roar" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0542281, -0.0406306, 0.0163279)
 stream = ExtResource("2_3m8rl")
+bus = &"SFX"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.322442, 0.125953, 0)
+shape = SubResource("BoxShape3D_nwc3h")
+
+[editable path="skin_reaver"]

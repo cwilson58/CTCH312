@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bv1kejfjhglol"]
+[gd_scene load_steps=26 format=3 uid="uid://bv1kejfjhglol"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_eej4n"]
 [ext_resource type="PackedScene" uid="uid://di3vke8xgrrl1" path="res://characters/player.tscn" id="3_8np8d"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://MonsterPath.gd" id="9_0t3it"]
 [ext_resource type="PackedScene" uid="uid://bh4k4mwxy2t3c" path="res://game_ui.tscn" id="9_t86to"]
 [ext_resource type="PackedScene" uid="uid://dlv8l2wvxnp78" path="res://interactables/chest.tscn" id="11_0fpvo"]
+[ext_resource type="PackedScene" uid="uid://cn2gt31383ctp" path="res://lightingNodes/torch.tscn" id="12_4o75x"]
+[ext_resource type="PackedScene" uid="uid://dgxiwyc7so4s" path="res://lightingNodes/candle.tscn" id="13_x6blf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8bx5c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -61,10 +63,6 @@ point_count = 8
 [node name="main" type="Node3D"]
 script = ExtResource("1_eej4n")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 97, -85)
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4sfj2")
 
@@ -88,6 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 7.5)
 shape = SubResource("BoxShape3D_yukml")
 
 [node name="Player" parent="." instance=ExtResource("3_8np8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.51974)
 
 [node name="Table" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56445, 0, 0)
@@ -123,6 +122,7 @@ viewport_size = Vector2(640, 360)
 unshaded = true
 
 [node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("Curve3D_b3x6c")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
@@ -133,3 +133,15 @@ script = ExtResource("9_0t3it")
 
 [node name="Chest" parent="." instance=ExtResource("11_0fpvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54578, 0.0320919, 0)
+
+[node name="Torch" parent="." instance=ExtResource("12_4o75x")]
+transform = Transform3D(-0.999804, 0, 0.0197907, 0, 1, 0, -0.0197907, 0, -0.999804, -1.50811, 2.22152, 6.86718)
+
+[node name="Torch2" parent="." instance=ExtResource("12_4o75x")]
+transform = Transform3D(-0.999804, 0, 0.0197907, 0, 1, 0, -0.0197907, 0, -0.999804, 0.629173, 2.22152, 6.87118)
+
+[node name="Candle" parent="." instance=ExtResource("13_x6blf")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.82178, 0.966294, -0.365357)
+
+[node name="Candle2" parent="." instance=ExtResource("13_x6blf")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.82178, 0.966294, 0.376895)

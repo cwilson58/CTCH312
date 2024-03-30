@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://gf35sv66v40b"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_8wayw"]
+[ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/materials/greyFloor.png" id="2_vlmup"]
+[ext_resource type="PackedScene" uid="uid://di3vke8xgrrl1" path="res://characters/player.tscn" id="3_cdmtq"]
+[ext_resource type="PackedScene" uid="uid://x6pwl1mmh16d" path="res://creditsInterface.tscn" id="5_uiw0g"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="7_hym1v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heo84"]
+albedo_texture = ExtResource("2_vlmup")
+uv1_scale = Vector3(60, 60, 60)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_byj1i"]
+material = SubResource("StandardMaterial3D_heo84")
+size = Vector2(300, 300)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nyn4o"]
+size = Vector3(300, 1, 300)
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_8wayw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_byj1i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_nyn4o")
+
+[node name="Player" parent="." instance=ExtResource("3_cdmtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.51974)
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("7_hym1v")]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0, 3.18625, -3.22435)
+screen_size = Vector2(1280, 768)
+scene = ExtResource("5_uiw0g")
+viewport_size = Vector2(640, 360)
+unshaded = true
