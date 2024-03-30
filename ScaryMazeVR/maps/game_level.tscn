@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bug6eo7vienko" path="res://characters/monster.tscn" id="6_rclpb"]
 [ext_resource type="Script" path="res://maps/PathFollow3D02.gd" id="7_mgbmg"]
 [ext_resource type="PackedScene" uid="uid://bx36jqdjeg750" path="res://LeverPuzzle.tscn" id="8_v1rri"]
-[ext_resource type="PackedScene" uid="uid://bolsy0muwtool" path="res://interactables/door.tscn" id="9_urgb1"]
+[ext_resource type="PackedScene" path="res://interactables/door.tscn" id="9_urgb1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bysir"]
 material = ExtResource("1_c0wjs")

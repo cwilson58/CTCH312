@@ -3,6 +3,7 @@
 class_name Monster extends CharacterBody3D
 
 @onready var light = $SpotLight3D
+@export var moving : bool = true
 var max_distance_squared
 var max_angle
 var target_velocity = Vector3.ZERO
@@ -10,7 +11,9 @@ var target_velocity = Vector3.ZERO
 func _ready():
 	max_distance_squared = light.spot_range*light.spot_range
 	max_angle = deg_to_rad(light.spot_angle)
-
+	if (moving):
+		$skin_reaver/AnimationPlayer.play("crawl")	
+	
 func _physics_process(delta):
 	# force monster to fallow the laws of gravity
 	if not is_on_floor():
