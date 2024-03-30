@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bv1kejfjhglol"]
+[gd_scene load_steps=24 format=3 uid="uid://bv1kejfjhglol"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_eej4n"]
 [ext_resource type="PackedScene" uid="uid://di3vke8xgrrl1" path="res://characters/player.tscn" id="3_8np8d"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/materials/greyFloor.png" id="8_n3ffn"]
 [ext_resource type="Script" path="res://MonsterPath.gd" id="9_0t3it"]
 [ext_resource type="PackedScene" uid="uid://bh4k4mwxy2t3c" path="res://game_ui.tscn" id="9_t86to"]
+[ext_resource type="PackedScene" uid="uid://dlv8l2wvxnp78" path="res://interactables/chest.tscn" id="11_0fpvo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8bx5c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -129,3 +130,6 @@ transform = Transform3D(0.00808202, 0, -0.999967, 0, 1, 0, 0.999967, 0, 0.008082
 script = ExtResource("9_0t3it")
 
 [node name="Monster" parent="Path3D/PathFollow3D" instance=ExtResource("4_odpet")]
+
+[node name="Chest" parent="." instance=ExtResource("11_0fpvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54578, 0.0320919, 0)

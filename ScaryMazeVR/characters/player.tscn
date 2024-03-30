@@ -1,15 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://di3vke8xgrrl1"]
+[gd_scene load_steps=14 format=3 uid="uid://di3vke8xgrrl1"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_biufw"]
 [ext_resource type="Environment" uid="uid://bk6g6m63ia8i1" path="res://maps/spooky_fog_environment.tres" id="1_fyx2x"]
 [ext_resource type="Script" path="res://characters/player.gd" id="1_m5rki"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="2_y7hhr"]
+[ext_resource type="PackedScene" uid="uid://137mldit0te1" path="res://interactables/player_interactor.tscn" id="3_dlwa4"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_dxj2a"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_grfjy"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_j1oh4"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_rrn2f"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_kigyv"]
 [ext_resource type="AudioStream" uid="uid://dorcq7cvye13" path="res://assets/sfx/dragon-roar-96996.mp3" id="10_knekr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sp04e"]
+size = Vector3(1, 1.32855, 3.08932)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4dtli"]
 margin = 0.01
@@ -25,6 +29,20 @@ script = ExtResource("1_m5rki")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 environment = ExtResource("1_fyx2x")
 current = true
+
+[node name="PlayerInteractor" parent="Camera" node_paths=PackedStringArray("player") instance=ExtResource("3_dlwa4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+player = NodePath("../..")
+
+[node name="CollisionShape3D" parent="Camera/PlayerInteractor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.656178, -1.22545)
+shape = SubResource("BoxShape3D_sp04e")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera"]
+light_color = Color(1, 1, 0.745098, 1)
+light_energy = 1.5
+light_volumetric_fog_energy = 1.5
+shadow_enabled = true
 
 [node name="LeftController" type="XRController3D" parent="."]
 tracker = &"left_hand"
@@ -64,3 +82,5 @@ shape = SubResource("CapsuleShape3D_4dtli")
 stream = ExtResource("10_knekr")
 
 [connection signal="button_pressed" from="RightController" to="." method="_on_right_controller_button_pressed"]
+
+[editable path="Camera/PlayerInteractor"]
