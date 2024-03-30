@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bv1kejfjhglol"]
+[gd_scene load_steps=23 format=3 uid="uid://bv1kejfjhglol"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_eej4n"]
 [ext_resource type="PackedScene" uid="uid://di3vke8xgrrl1" path="res://characters/player.tscn" id="3_8np8d"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bx36jqdjeg750" path="res://LeverPuzzle.tscn" id="7_pn00w"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="8_jy8vg"]
 [ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/materials/greyFloor.png" id="8_n3ffn"]
+[ext_resource type="Script" path="res://MonsterPath.gd" id="9_0t3it"]
 [ext_resource type="PackedScene" uid="uid://bh4k4mwxy2t3c" path="res://game_ui.tscn" id="9_t86to"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8bx5c"]
@@ -49,6 +50,13 @@ material = SubResource("StandardMaterial3D_8vm7u")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oef04"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="Curve3D" id="Curve3D_b3x6c"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.85039, 0, 12.9412, 0, 0, 0, 0, 0, 0, 3.92176, 0, 12.8703, 0, 0, 0, 0, 0, 0, 8.22049, 0, 9.13028, 0, 0, 0, 0, 0, 0, 11.8967, 0, 16.8766, 0, 0, 0, 0, 0, 0, 4.01909, 0, 22.6098, 0, 0, 0, 0, 0, 0, 1.08687, 0, 16.8547, 0, 0, 0, 0, 0, 0, -5.78416, 0, 19.4587, 0, 0, 0, 0, 0, 0, -4.85039, 0, 12.9412),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [node name="main" type="Node3D"]
 script = ExtResource("1_eej4n")
 
@@ -67,9 +75,6 @@ mesh = SubResource("PlaneMesh_byj1i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_nyn4o")
-
-[node name="Monster" parent="." instance=ExtResource("4_odpet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 12.6649)
 
 [node name="Wall" type="StaticBody3D" parent="."]
 
@@ -115,3 +120,12 @@ screen_size = Vector2(1280, 768)
 scene = ExtResource("9_t86to")
 viewport_size = Vector2(640, 360)
 unshaded = true
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_b3x6c")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.00808202, 0, -0.999967, 0, 1, 0, 0.999967, 0, 0.00808202, -4.85039, 0, 12.9412)
+script = ExtResource("9_0t3it")
+
+[node name="Monster" parent="Path3D/PathFollow3D" instance=ExtResource("4_odpet")]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx36jqdjeg750"]
+[gd_scene load_steps=7 format=3 uid="uid://bx36jqdjeg750"]
 
 [ext_resource type="PackedScene" uid="uid://dxgv8axd355m7" path="res://lever_snap.tscn" id="1_8k8qa"]
 [ext_resource type="Script" path="res://LeverPuzzle.gd" id="1_i2qh7"]
 [ext_resource type="AudioStream" uid="uid://kog653uuakky" path="res://assets/sfx/click-menu-app-147357.mp3" id="3_3kujf"]
 [ext_resource type="AudioStream" uid="uid://dj3lm12bykb5r" path="res://assets/sfx/buzzer-or-wrong-answer-20582.mp3" id="4_fn04h"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_r8cx7"]
+[ext_resource type="PackedScene" uid="uid://bycqfsf8y78wt" path="res://puzzle_label.tscn" id="6_fixib"]
 
 [node name="LeverPuzzle" type="Node3D"]
 script = ExtResource("1_i2qh7")
@@ -25,6 +27,14 @@ stream = ExtResource("3_3kujf")
 [node name="FailAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_fn04h")
 volume_db = -10.0
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("5_r8cx7")]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0.476053, 0.756462, 0)
+screen_size = Vector2(1280, 768)
+enabled = false
+scene = ExtResource("6_fixib")
+viewport_size = Vector2(640, 360)
+unshaded = true
 
 [connection signal="position_changed" from="LeverSnap01" to="." method="_on_lever_snap_01_position_changed"]
 [connection signal="position_changed" from="LeverSnap02" to="." method="_on_lever_snap_02_position_changed"]

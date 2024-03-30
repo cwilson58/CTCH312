@@ -8,38 +8,40 @@ signal code_correct
 
 func _ready():
 	code = randi_range(1,15)
+	$Viewport2Din3D.scene_node.set_label(code)
 
 func check_correct() -> void:
 	if(code == current_attempt):
 		code_correct.emit()
+		$FailAudio.stop()
 		$SuccessAudio.play()
 	else:
 		$FailAudio.play()
 
 func _on_lever_snap_01_position_changed(position : int) -> void:
 	if(position > 0):
-		current_attempt |= 1
+		current_attempt |= (1 << 3)
 	else:
 		current_attempt &= 0b1110
 	check_correct()
 	
 func _on_lever_snap_02_position_changed(position : int) -> void:
 	if(position > 0):
-		current_attempt |= (1 << 1)
+		current_attempt |= (1 << 2)
 	else:
 		current_attempt &= 0b1101
 	check_correct()
 
 func _on_lever_snap_03_position_changed(position : int) -> void:
 	if(position > 0):
-		current_attempt |= (1 << 2)
+		current_attempt |= (1 << 1)
 	else:
 		current_attempt &= 0b1011
 	check_correct()
 
 func _on_lever_snap_04_position_changed(position : int) -> void:
 	if(position > 0):
-		current_attempt |= (1 << 3)
+		current_attempt |= 1
 	else:
 		current_attempt &= 0b0111
 	check_correct()
