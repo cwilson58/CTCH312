@@ -16,6 +16,10 @@ points = PackedVector3Array(-64, 0, -64, -64, 0, 64, 64, 0, -64, 64, 0, 64)
 [node name="GameLevel" type="Node3D"]
 script = ExtResource("1_w3p8n")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, -24.0893, 53.9676, -63.3173)
+shadow_enabled = true
+
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
 mesh_library = ExtResource("2_h52yl")
