@@ -7,9 +7,9 @@ size = Vector3(0.5, 0.75, 0.01)
 
 [node name="TorchHolder" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Backplate" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 mesh = SubResource("BoxMesh_xugwt")
 
 [node name="TorchSnapZone" parent="." instance=ExtResource("1_lno33")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.514965, 0)
+transform = Transform3D(-4.1666e-08, -1.32148e-08, -1, -0.30232, 0.953206, 0, 0.953206, 0.30232, -4.37114e-08, -3.55493e-09, 0.489171, 0.0813274)

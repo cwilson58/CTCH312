@@ -1,0 +1,75 @@
+[gd_scene load_steps=17 format=3 uid="uid://bludqdyo1l04u"]
+
+[ext_resource type="AudioStream" uid="uid://ca50jnj3kours" path="res://assets/sfx/skinReaver/FallenIntoTrap.mp3" id="1_judpn"]
+[ext_resource type="Script" path="res://characters/SkinReaver.gd" id="1_s747h"]
+[ext_resource type="AudioStream" uid="uid://ctimgnq2hgrgk" path="res://assets/sfx/skinReaver/YouBecomeMonster.mp3" id="2_2erss"]
+[ext_resource type="AudioStream" uid="uid://c5svkymw3hoqt" path="res://assets/sfx/skinReaver/FoundYourSkin.mp3" id="3_by5dp"]
+[ext_resource type="AudioStream" uid="uid://bmqc1vl41dise" path="res://assets/sfx/skinReaver/YouNotWorthyv1.mp3" id="4_pkuhm"]
+[ext_resource type="AudioStream" uid="uid://c2808xx74jv1a" path="res://assets/sfx/skinReaver/YouNotWorthyv2.mp3" id="5_m6jr8"]
+[ext_resource type="AudioStream" uid="uid://bskpumdtj864u" path="res://assets/sfx/skinReaver/SoYouMayGo.mp3" id="6_083vf"]
+[ext_resource type="AudioStream" uid="uid://bmrxlpk0eaidx" path="res://assets/sfx/skinReaver/NopeNotThatWayv1.mp3" id="7_h84l0"]
+[ext_resource type="AudioStream" uid="uid://b2rmr25hnv3ma" path="res://assets/sfx/skinReaver/NopeNotThatWayv2.mp3" id="8_y6sqf"]
+[ext_resource type="AudioStream" uid="uid://ep43qyk0xd8k" path="res://assets/sfx/skinReaver/NopeNotThatWayv3.mp3" id="9_j0cmi"]
+[ext_resource type="AudioStream" uid="uid://bqj8r178jjh7w" path="res://assets/sfx/skinReaver/AreYouSure.mp3" id="10_l3rjj"]
+[ext_resource type="AudioStream" uid="uid://co3lwoqqx4s4p" path="res://assets/sfx/skinReaver/TheMonsterHug.mp3" id="11_t2hkh"]
+[ext_resource type="AudioStream" uid="uid://df1fq4q2sc35u" path="res://assets/sfx/skinReaver/YouFigureOut.mp3" id="12_2c76p"]
+[ext_resource type="AudioStream" uid="uid://cwedts2u3p5ca" path="res://assets/sfx/skinReaver/GettingWarmer.mp3" id="13_fjw15"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t8qh6"]
+streams_count = 2
+stream_0/stream = ExtResource("4_pkuhm")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_m6jr8")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u26my"]
+streams_count = 3
+stream_0/stream = ExtResource("7_h84l0")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_y6sqf")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("9_j0cmi")
+stream_2/weight = 1.0
+
+[node name="SkinReaver" type="Node3D"]
+script = ExtResource("1_s747h")
+
+[node name="Intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_judpn")
+bus = &"SkinReaverSpeaking"
+
+[node name="ForgotMonster" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2erss")
+bus = &"SkinReaverSpeaking"
+
+[node name="FoundSkin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_by5dp")
+bus = &"SkinReaverSpeaking"
+
+[node name="NotWorthy" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_t8qh6")
+bus = &"SkinReaverSpeaking"
+
+[node name="YouMayLeave" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_083vf")
+bus = &"SkinReaverSpeaking"
+
+[node name="WrongWay" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_u26my")
+bus = &"SkinReaverSpeaking"
+
+[node name="AreYouSure" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_l3rjj")
+bus = &"SkinReaverSpeaking"
+
+[node name="MonsterHug" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_t2hkh")
+bus = &"SkinReaverSpeaking"
+
+[node name="FiguredPuzzlesOut" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_2c76p")
+bus = &"SkinReaverSpeaking"
+
+[node name="GettingWarmer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_fjw15")
+bus = &"SkinReaverSpeaking"

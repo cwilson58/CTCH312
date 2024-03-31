@@ -110,5 +110,6 @@ volume_db = -20.0
 autoplay = true
 max_distance = 10.0
 panning_strength = 3.0
+bus = &"SFX"
 
 [editable path="torch_lit_gltf"]
