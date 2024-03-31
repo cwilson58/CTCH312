@@ -8,12 +8,16 @@ class_name Monster extends CharacterBody3D
 var max_distance_squared
 var max_angle
 var target_velocity = Vector3.ZERO
+@onready var dialog_audio : AudioStreamPlayer3D = $Dialog
 
 func _ready():
 	max_distance_squared = light.spot_range*light.spot_range
 	max_angle = deg_to_rad(light.spot_angle)
+	
 	if (moving):
 		$skin_reaver/AnimationPlayer.play("crawl")
+	# THIS IS INF RECURSIVE AND SHOULD BE THE LAST METHOD CALLED.
+	_on_timer_timeout()
 	
 func _physics_process(delta):
 	# force monster to fallow the laws of gravity
@@ -42,3 +46,9 @@ func _process(_delta):
 			light.light_color = Color.RED
 			if !$Roar.playing:
 				$Roar.play()
+
+
+func _on_timer_timeout():
+	dialog_audio.play()
+	await get_tree().create_timer(randf_range(15,60)).timeout
+	_on_timer_timeout()

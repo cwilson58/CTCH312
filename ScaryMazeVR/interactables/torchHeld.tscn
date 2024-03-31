@@ -67,7 +67,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vkbfi")
 
 [node name="Torch" groups=["Torch"] instance=ExtResource("1_8wria")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="torch_lit_gltf" parent="." index="0" instance=ExtResource("2_k7kk3")]
 transform = Transform3D(0.353553, 0, 0.353553, 0, 0.5, 0, -0.353553, 0, 0.353553, 0, -0.154363, 0)

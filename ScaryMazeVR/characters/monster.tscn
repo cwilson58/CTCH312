@@ -1,8 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bug6eo7vienko"]
+[gd_scene load_steps=9 format=3 uid="uid://bug6eo7vienko"]
 
 [ext_resource type="Script" path="res://characters/Monster.gd" id="1_j42wl"]
 [ext_resource type="AudioStream" uid="uid://dorcq7cvye13" path="res://assets/sfx/dragon-roar-96996.mp3" id="2_3m8rl"]
 [ext_resource type="PackedScene" uid="uid://d1r4dkdxe86v8" path="res://assets/monsters/skin_reaver.tscn" id="2_reukq"]
+[ext_resource type="AudioStream" uid="uid://bgldi6rcuatpt" path="res://assets/sfx/MonsterLine1.mp3" id="4_abbw0"]
+[ext_resource type="AudioStream" uid="uid://c4xie4urp3r5u" path="res://assets/sfx/MonsterLine2.mp3" id="5_awmj7"]
+[ext_resource type="AudioStream" uid="uid://c0esjgogmwoai" path="res://assets/sfx/MonsterLine3.mp3" id="6_witgu"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7hop2"]
+streams_count = 3
+stream_0/stream = ExtResource("4_abbw0")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_awmj7")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_witgu")
+stream_2/weight = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwc3h"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -28,6 +40,9 @@ spot_angle = 57.46
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0542281, -0.0406306, 0.0163279)
 stream = ExtResource("2_3m8rl")
 bus = &"SFX"
+
+[node name="Dialog" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_7hop2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.322442, 0.125953, 0)
