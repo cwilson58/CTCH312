@@ -14,6 +14,8 @@ func _ready():
 	max_angle = deg_to_rad(light.spot_angle)
 	if (moving):
 		$skin_reaver/AnimationPlayer.play("crawl")
+	else:
+		$skin_reaver/AnimationPlayer.play("idle_animations/idle")
 	
 func _physics_process(delta):
 	# force monster to fallow the laws of gravity
