@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh4k4mwxy2t3c"]
+[gd_scene load_steps=5 format=3 uid="uid://bh4k4mwxy2t3c"]
 
 [ext_resource type="Script" path="res://game_ui.gd" id="1_288um"]
+[ext_resource type="Texture2D" uid="uid://i1klbgnjv6m0" path="res://assets/images/LabyrinthOfTheFleshless.png" id="2_qn1we"]
+[ext_resource type="FontFile" uid="uid://cxxbhl0yrluy8" path="res://assets/fonts/who asks satan.ttf" id="3_hhtla"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llqfk"]
+bg_color = Color(0, 0, 0, 0.823529)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [node name="GameUi" type="CanvasLayer"]
 script = ExtResource("1_288um")
@@ -13,13 +22,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="TextureRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_qn1we")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect"]
 layout_mode = 1
@@ -35,22 +47,19 @@ theme_override_constants/margin_bottom = 250
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Labrynth of The Fleshless"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Nicolas Ansell, Cameron Wilson"
-horizontal_alignment = 1
+alignment = 2
 
 [node name="Button" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.67451, 0, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.760784)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_hhtla")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_llqfk")
 text = "Start Game
 "
 

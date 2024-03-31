@@ -16,6 +16,8 @@ func _ready():
 	
 	if (moving):
 		$skin_reaver/AnimationPlayer.play("crawl")
+	else:
+		$skin_reaver/AnimationPlayer.play("idle_animations/idle")
 	# THIS IS INF RECURSIVE AND SHOULD BE THE LAST METHOD CALLED.
 	_on_timer_timeout()
 	

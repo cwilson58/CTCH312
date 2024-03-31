@@ -1,13 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://bv1kejfjhglol"]
+[gd_scene load_steps=27 format=3 uid="uid://bv1kejfjhglol"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_eej4n"]
+[ext_resource type="Material" uid="uid://3igsth4mwvdw" path="res://assets/rubber_wall.tres" id="2_cvrta"]
 [ext_resource type="PackedScene" uid="uid://di3vke8xgrrl1" path="res://characters/player.tscn" id="3_8np8d"]
 [ext_resource type="PackedScene" uid="uid://bug6eo7vienko" path="res://characters/monster.tscn" id="4_odpet"]
 [ext_resource type="PackedScene" uid="uid://c847qpm0u68ay" path="res://addons/godot-xr-tools/objects/cube.tscn" id="6_7kvpa"]
 [ext_resource type="PackedScene" uid="uid://cs6dxfu5owcgo" path="res://lever_smooth.tscn" id="6_euaia"]
 [ext_resource type="PackedScene" uid="uid://bx36jqdjeg750" path="res://LeverPuzzle.tscn" id="7_pn00w"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="8_jy8vg"]
-[ext_resource type="Texture2D" uid="uid://cts7i8ni3d8l4" path="res://assets/materials/greyFloor.png" id="8_n3ffn"]
 [ext_resource type="Script" path="res://MonsterPath.gd" id="9_0t3it"]
 [ext_resource type="PackedScene" uid="uid://bh4k4mwxy2t3c" path="res://game_ui.tscn" id="9_t86to"]
 [ext_resource type="PackedScene" uid="uid://dlv8l2wvxnp78" path="res://interactables/chest.tscn" id="11_0fpvo"]
@@ -29,12 +29,8 @@ sky = SubResource("Sky_bda4w")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heo84"]
-albedo_texture = ExtResource("8_n3ffn")
-uv1_scale = Vector3(60, 60, 60)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_byj1i"]
-material = SubResource("StandardMaterial3D_heo84")
+material = ExtResource("2_cvrta")
 size = Vector2(300, 300)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nyn4o"]

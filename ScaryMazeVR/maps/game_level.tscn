@@ -86,10 +86,9 @@ shape = SubResource("BoxShape3D_nmfyq")
 
 [node name="Monster01" parent="." instance=ExtResource("6_rclpb")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.0597, 2.69978, -40.4267)
+moving = false
 
 [node name="Monster02Path" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-curve = SubResource("Curve3D_mstgc")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Monster02Path"]
 transform = Transform3D(0.0284171, 0, -0.999595, 0, 1, 0, 0.999595, 0, 0.0284171, -24.9838, 0, -16.1521)
@@ -97,6 +96,18 @@ script = ExtResource("7_mgbmg")
 
 [node name="Monster02" parent="Monster02Path/PathFollow3D" instance=ExtResource("6_rclpb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="Monster04" parent="." instance=ExtResource("6_rclpb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.552, 12, 59.477)
+moving = false
+
+[node name="Monster06" parent="." instance=ExtResource("6_rclpb")]
+transform = Transform3D(0.0224429, 0, -0.999744, 0, 1, 0, 0.999744, 0, 0.0224429, 22.6, 12, -45.022)
+moving = false
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+curve = SubResource("Curve3D_mstgc")
 
 [node name="Monster03Path" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -109,7 +120,7 @@ script = ExtResource("7_mgbmg")
 [node name="Monster03" parent="Monster03Path/PathFollow3D" instance=ExtResource("6_rclpb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="Monster04" parent="." instance=ExtResource("6_rclpb")]
+[node name="Monster05" parent="." instance=ExtResource("6_rclpb")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.552, 12, 59.477)
 
 [node name="PMonster05Path" type="Path3D" parent="."]
@@ -123,7 +134,7 @@ script = ExtResource("7_mgbmg")
 [node name="Monster05" parent="PMonster05Path/PathFollow3D" instance=ExtResource("6_rclpb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="Monster06" parent="." instance=ExtResource("6_rclpb")]
+[node name="Monster07" parent="." instance=ExtResource("6_rclpb")]
 transform = Transform3D(0.0224429, 0, -0.999744, 0, 1, 0, 0.999744, 0, 0.0224429, 22.6, 12, -45.022)
 
 [node name="SpawnPuzzle" parent="." instance=ExtResource("8_v1rri")]
