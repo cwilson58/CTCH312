@@ -297,6 +297,7 @@ tracker = &"right_hand"
 [node name="RightHand" parent="RightController" instance=ExtResource("2_y7hhr")]
 
 [node name="MovementDirect" parent="RightController/RightHand" instance=ExtResource("3_grfjy")]
+strafe = true
 
 [node name="MovementTurn" parent="RightController/RightHand" instance=ExtResource("4_rrn2f")]
 turn_mode = 2

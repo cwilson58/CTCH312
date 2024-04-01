@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3eas8ogxe12x"]
+
+[ext_resource type="FontFile" uid="uid://cxxbhl0yrluy8" path="res://assets/fonts/who asks satan.ttf" id="1_1cups"]
+[ext_resource type="Script" path="res://2DScenes/choose.gd" id="1_bjwum"]
+
+[node name="Choose" type="CanvasLayer"]
+script = ExtResource("1_bjwum")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Take Skin" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.65098, 0.0509804, 0.0352941, 1)
+theme_override_fonts/font = ExtResource("1_1cups")
+theme_override_font_sizes/font_size = 72
+text = "Take Skin"
+
+[node name="Stop Reaver" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.65098, 0.0509804, 0.0352941, 1)
+theme_override_fonts/font = ExtResource("1_1cups")
+theme_override_font_sizes/font_size = 72
+text = "Stop Them"
+
+[connection signal="pressed" from="Control/HBoxContainer/Take Skin" to="." method="_on_take_skin_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Stop Reaver" to="." method="_on_stop_reaver_pressed"]

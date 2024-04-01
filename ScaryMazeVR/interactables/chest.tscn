@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlv8l2wvxnp78"]
+[gd_scene load_steps=12 format=3 uid="uid://dlv8l2wvxnp78"]
 
 [ext_resource type="Texture2D" uid="uid://c33mrsklfbvmr" path="res://assets/dungeon_pack/trunk_large_B_dungeon_texture.png" id="1_ktvgp"]
 [ext_resource type="Script" path="res://interactables/chest.gd" id="1_uifyf"]
 [ext_resource type="PackedScene" uid="uid://cueo2u1qupt1q" path="res://interactables/interactable.tscn" id="2_x56oa"]
 [ext_resource type="AudioStream" uid="uid://fu22nymdiu6v" path="res://assets/sfx/wooden-trunk-latch-1-183944.mp3" id="4_5vls0"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_27c1t"]
+[ext_resource type="PackedScene" uid="uid://d3eas8ogxe12x" path="res://2DScenes/choose.tscn" id="6_vwonr"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6t4w5"]
 points = PackedVector3Array(-0.433731, 0.684221, -0.650001, -0.75, 0.340152, -0.602027, -0.75, 0.663469, -0.589556, -0.433584, 1, -0.36114, 0.433585, 0.684221, -0.650001, -0.705951, -2.02792e-07, -0.501753, -0.75, 0.340152, 0.601898, 0.75, 0.340152, -0.602027, -0.75, 0.923062, -0.302223, -0.75, 0.923062, 0.302094, -0.433584, 0.999902, 0.361011, -0.249021, 1, 0.361011, 0.248728, 1, -0.36114, 0.433438, 0.999902, -0.36114, 0.75, 0.663469, -0.589556, -0.705951, -2.02792e-07, 0.501624, 0.705805, -2.02792e-07, -0.501753, -0.433731, 0.684221, 0.649999, -0.75, 0.663469, 0.589428, 0.75, 0.340152, 0.601898, 0.433438, 1, 0.361011, 0.75, 0.923062, -0.302223, 0.705805, -2.02792e-07, 0.501624, 0.433585, 0.684221, 0.649999, 0.75, 0.663469, 0.589428, 0.75, 0.923062, 0.302094)
@@ -45,11 +47,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4oriq")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iyl46"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.827451, 0.796078, 0, 1)
+grow = true
+grow_amount = 0.02
+
 [node name="Chest" type="StaticBody3D"]
 script = ExtResource("1_uifyf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_6t4w5")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("ArrayMesh_lq3kg")
+surface_material_override/0 = SubResource("StandardMaterial3D_iyl46")
 
 [node name="trunk_large_B_gltf" type="Node3D" parent="."]
 
@@ -61,6 +75,12 @@ skeleton = NodePath("")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_5vls0")
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("5_27c1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81721, -0.390931)
+visible = false
+scene = ExtResource("6_vwonr")
+viewport_size = Vector2(600, 200)
 
 [connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

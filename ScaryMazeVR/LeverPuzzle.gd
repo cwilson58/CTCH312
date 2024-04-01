@@ -22,26 +22,26 @@ func _on_lever_snap_01_position_changed(position : int) -> void:
 	if(position > 0):
 		current_attempt |= (1 << 3)
 	else:
-		current_attempt &= 0b1110
+		current_attempt &= 0b0111
 	check_correct()
 	
 func _on_lever_snap_02_position_changed(position : int) -> void:
 	if(position > 0):
 		current_attempt |= (1 << 2)
 	else:
-		current_attempt &= 0b1101
+		current_attempt &= 0b1011
 	check_correct()
 
 func _on_lever_snap_03_position_changed(position : int) -> void:
 	if(position > 0):
 		current_attempt |= (1 << 1)
 	else:
-		current_attempt &= 0b1011
+		current_attempt &= 0b1101
 	check_correct()
 
 func _on_lever_snap_04_position_changed(position : int) -> void:
 	if(position > 0):
 		current_attempt |= 1
 	else:
-		current_attempt &= 0b0111
+		current_attempt &= 0b1110
 	check_correct()

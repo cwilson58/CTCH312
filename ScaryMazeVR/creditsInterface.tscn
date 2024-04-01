@@ -59,7 +59,8 @@ horizontal_alignment = 1
 [node name="Assets2" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Voice Acting:
-Michael Osachoff"
+Michael Osachoff (Skin Reaver)
+Cameron Wilson (Monsters)"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
