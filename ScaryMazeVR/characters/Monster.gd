@@ -9,6 +9,9 @@ var max_distance_squared
 var max_angle
 var target_velocity = Vector3.ZERO
 @onready var dialog_audio : AudioStreamPlayer3D = $Dialog
+@onready var player = get_tree().get_node_or_null("Player")
+
+signal player_detected
 
 func _ready():
 	max_distance_squared = light.spot_range*light.spot_range
@@ -45,10 +48,9 @@ func _process(_delta):
 		var cos_angle = monster_to_body_norm.dot(monster_facing)
 		var angle = acos(cos_angle)
 		if angle < max_angle:
+			if (player != null):
+				player.get_caught()
 			light.light_color = Color.RED
-			if !$Roar.playing:
-				$Roar.play()
-
 
 func _on_timer_timeout():
 	dialog_audio.play()
