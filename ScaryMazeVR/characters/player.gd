@@ -10,4 +10,6 @@ func _on_right_controller_button_pressed(name : String) -> void:
 
 func get_caught():
 	$AnimationPlayer.play("player_caught")
+
+func teleport_spawn():
 	position = Vector3i(-52, 3 ,-8)

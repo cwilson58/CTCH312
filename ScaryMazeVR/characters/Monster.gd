@@ -4,12 +4,13 @@ class_name Monster extends CharacterBody3D
 
 @onready var light = $SpotLight3D
 @export var moving : bool = true
+@export var can_detect : bool = true
 
 var max_distance_squared
 var max_angle
 var target_velocity = Vector3.ZERO
 @onready var dialog_audio : AudioStreamPlayer3D = $Dialog
-@onready var player = get_tree().get_node_or_null("Player")
+@onready var player = get_tree().root.get_node_or_null("Player")
 
 signal player_detected
 
@@ -32,6 +33,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta):
+	if(!can_detect):
+		return
 	light.light_color = Color.WHITE
 	var my_pos : Vector3 = global_transform.origin
 	for body : Node3D in get_tree().get_nodes_in_group("monster_visible"):
@@ -48,8 +51,8 @@ func _process(_delta):
 		var cos_angle = monster_to_body_norm.dot(monster_facing)
 		var angle = acos(cos_angle)
 		if angle < max_angle:
-			if (player != null):
-				player.get_caught()
+			if (body != null):
+				body.get_caught()
 			light.light_color = Color.RED
 
 func _on_timer_timeout():

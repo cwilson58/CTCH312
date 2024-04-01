@@ -14,4 +14,3 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.15
 volumetric_fog_albedo = Color(0.407843, 0.407843, 0.407843, 1)
 volumetric_fog_emission_energy = 0.0
-adjustment_enabled = true
