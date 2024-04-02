@@ -53,7 +53,7 @@ autowrap_mode = 2
 [node name="Assets" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Level Assets:
-Purchased from _____"
+Purchased from Kay Lousberg"
 horizontal_alignment = 1
 
 [node name="Assets2" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
