@@ -12,4 +12,7 @@ func get_caught():
 	$AnimationPlayer.play("player_caught")
 
 func teleport_spawn():
-	position = Vector3i(-52, 3 ,-8)
+	position = Globals.PLAYER_SPAWN_POSITION
+	var torch = get_tree().get_first_node_in_group("Torch")
+	if (torch != null):
+		torch.position = Globals.TORCH_SPAWN_POSITION
