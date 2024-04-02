@@ -99,10 +99,11 @@ mesh = SubResource("ArrayMesh_o8yo4")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00100217, 0.215137, 0.00241193)
-light_color = Color(0.92549, 0.411765, 0.192157, 1)
-light_energy = 2.0
+light_color = Color(0.752941, 0.54902, 0.0941176, 1)
+light_energy = 6.0
 light_volumetric_fog_energy = 2.0
 shadow_enabled = true
+omni_range = 12.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="8"]
 stream = ExtResource("10_f1wrf")
