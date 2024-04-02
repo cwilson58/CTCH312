@@ -1,6 +1,11 @@
 # Labyrinth of the Fleshless
 VR Game for CTCH 312, code named "ScaryMazeVR"
 
+## Demo
+Click the title art for a YouTube demo!
+[![Title Art](./ScaryMazeVR/assets/images/LabyrinthOfTheFleshless.png)](https://www.youtube.com/watch?v=5VKtjJOgkC8)
+
+    Title Art background created with AI.
 ## Software Required
 [Godot v4.2](https://godotengine.org/download/windows/)
 
