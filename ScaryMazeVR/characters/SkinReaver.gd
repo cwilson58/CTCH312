@@ -59,6 +59,8 @@ func _on_forgot_monster_body_entered(body):
 
 
 func _on_chest_choice_made(choice : bool):
+	# ensure skin found voice line is muted
+	found_skin.stop()
 	if(choice):
 		you_may_leave.play()
 		await you_may_leave.finished
@@ -67,3 +69,7 @@ func _on_chest_choice_made(choice : bool):
 		not_worthy.play()
 		await not_worthy.finished
 		get_tree().change_scene_to_file("res://credits.tscn")
+
+
+func _on_chest_opened():
+	found_skin.play()

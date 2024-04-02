@@ -4,7 +4,7 @@
 [ext_resource type="Environment" uid="uid://bk6g6m63ia8i1" path="res://maps/spooky_fog_environment.tres" id="1_fyx2x"]
 [ext_resource type="Script" path="res://characters/player.gd" id="1_m5rki"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="2_y7hhr"]
-[ext_resource type="PackedScene" path="res://interactables/player_interactor.tscn" id="3_dlwa4"]
+[ext_resource type="PackedScene" uid="uid://137mldit0te1" path="res://interactables/player_interactor.tscn" id="3_dlwa4"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_dxj2a"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_grfjy"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_j1oh4"]
@@ -371,10 +371,7 @@ bones/2/rotation = Quaternion(0.0364772, -0.00852893, 0.00320915, 0.999293)
 bones/3/rotation = Quaternion(0.0365622, -0.00823858, 0.0035632, 0.999291)
 bones/4/rotation = Quaternion(-0.0217762, 0.017956, -0.0293825, 0.99917)
 bones/5/rotation = Quaternion(-0.196984, 0.0556615, -0.0355185, 0.978181)
-bones/7/rotation = Quaternion(0.707107, 0, 0, 0.707107)
-bones/8/rotation = Quaternion(0.707107, 0, 0, 0.707107)
 bones/9/position = Vector3(-1.43051e-08, -0.0216731, 0.0385261)
-bones/10/rotation = Quaternion(0, 0.707107, 0.707107, 0)
 bones/11/rotation = Quaternion(0.535622, 0.457318, 0.535128, -0.466483)
 bones/12/rotation = Quaternion(0.259168, 0.905152, -0.333244, 0.049792)
 bones/13/rotation = Quaternion(0.426776, -0.590065, 0.436364, 0.528463)
