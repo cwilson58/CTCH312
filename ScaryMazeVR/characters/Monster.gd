@@ -11,6 +11,7 @@ var max_angle
 var target_velocity = Vector3.ZERO
 @onready var dialog_audio : AudioStreamPlayer3D = $Dialog
 @onready var player = get_tree().root.get_node_or_null("Player")
+var detection_areas : Array[MonsterDetectionArea3d]
 
 signal player_detected
 
@@ -29,6 +30,8 @@ func _physics_process(delta):
 	# force monster to fallow the laws of gravity
 	if not is_on_floor():
 		target_velocity.y = target_velocity.y - (9.81 * delta)
+	else: # set to zero as we have no jumping in the game
+		target_velocity.y = 0
 	velocity = target_velocity
 	move_and_slide()
 
@@ -39,7 +42,8 @@ func _process(_delta):
 	var my_pos : Vector3 = global_transform.origin
 	for body : Node3D in get_tree().get_nodes_in_group("monster_visible"):
 		var body_pos : Vector3 = body.global_transform.origin
-		
+		if !player_detectable():
+			continue
 		if my_pos.distance_squared_to(body_pos) > max_distance_squared:
 			continue
 		
@@ -55,7 +59,20 @@ func _process(_delta):
 				body.get_caught()
 			light.light_color = Color.RED
 
+func player_detectable() -> bool:
+	for detection_area : MonsterDetectionArea3d in detection_areas:
+		if detection_area.player_present:
+			return true
+	return false
+
 func _on_timer_timeout():
 	dialog_audio.play()
 	await get_tree().create_timer(randf_range(15,60)).timeout
 	_on_timer_timeout()
+
+func add_detection_area(area : MonsterDetectionArea3d):
+	if !detection_areas.has(area):
+		detection_areas.append(area)
+
+func remove_detection_area(area : MonsterDetectionArea3d):
+	detection_areas.erase(area)

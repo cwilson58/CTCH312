@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bslpqwa1b5hmj"]
+[gd_scene load_steps=45 format=3 uid="uid://bslpqwa1b5hmj"]
 
 [ext_resource type="Material" uid="uid://3igsth4mwvdw" path="res://assets/rubber_wall.tres" id="1_c0wjs"]
 [ext_resource type="Script" path="res://maps/game_level.gd" id="1_w3p8n"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b7pjbode06apm" path="res://interactables/torchHolder.tscn" id="13_0mioy"]
 [ext_resource type="PackedScene" uid="uid://cn5x5nkuvytc0" path="res://interactables/torchHeld.tscn" id="14_2d2pc"]
 [ext_resource type="PackedScene" uid="uid://bludqdyo1l04u" path="res://characters/SkinReaver.tscn" id="15_hjm8g"]
+[ext_resource type="PackedScene" uid="uid://ckxf8te3b0pna" path="res://characters/monster/MonsterDetectionArea3D.tscn" id="16_s0xcq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bysir"]
 material = ExtResource("1_c0wjs")
@@ -67,6 +68,51 @@ size = Vector3(1, 4, 5.58179)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_smyvw"]
 size = Vector3(3.98181, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fnijh"]
+size = Vector3(13.5044, 3, 7.30347)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ghi8b"]
+size = Vector3(9.15503, 3, 3.6474)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7g0bg"]
+size = Vector3(3.5274, 3, 23.5025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_51e4p"]
+size = Vector3(3.57019, 3, 23.8002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_svr4v"]
+size = Vector3(11.6481, 3, 3.44385)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhrub"]
+size = Vector3(10.8013, 3, 3.54419)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rpb7y"]
+size = Vector3(3.22839, 3, 23.4299)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v41pm"]
+size = Vector3(5.60986, 3, 23.6709)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pln1e"]
+size = Vector3(17.0607, 3, 3.74976)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1tnt"]
+size = Vector3(17.0631, 3, 3.42474)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_afwxg"]
+size = Vector3(7.3938, 3, 3.99548)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hl4sc"]
+size = Vector3(15.4702, 3, 23.3073)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_data3"]
+size = Vector3(9.35797, 3, 15.812)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f43k1"]
+size = Vector3(9.51071, 3, 10.0566)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iixoo"]
+size = Vector3(5.75716, 3, 16.4982)
 
 [node name="GameLevel" type="Node3D"]
 script = ExtResource("1_w3p8n")
@@ -543,6 +589,119 @@ collision_mask = 524288
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SkinReaverAreas/GettingWarmer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69696, 1.31843, 0)
 shape = SubResource("BoxShape3D_smyvw")
+
+[node name="MonsterDetectionArea3d" parent="." instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1727, 0, -41.9433)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MonsterDetectionArea3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36328, 2.17115, 1.08777)
+shape = SubResource("BoxShape3D_fnijh")
+
+[node name="MonsterDetectionArea3d2" parent="." instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3253, 0, 59.3593)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MonsterDetectionArea3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31946, 2.381, -0.365814)
+shape = SubResource("BoxShape3D_ghi8b")
+
+[node name="Monster2DetectZones" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0684, 0, -6.94016)
+
+[node name="MonsterDetectionArea3d" parent="Monster2DetectZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96581, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster2DetectZones/MonsterDetectionArea3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.094635, 2.41133, 0.0184479)
+shape = SubResource("BoxShape3D_7g0bg")
+
+[node name="MonsterDetectionArea3d2" parent="Monster2DetectZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13405, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster2DetectZones/MonsterDetectionArea3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0132446, 2.44477, 0.167175)
+shape = SubResource("BoxShape3D_51e4p")
+
+[node name="MonsterDetectionArea3d3" parent="Monster2DetectZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.9474)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster2DetectZones/MonsterDetectionArea3d3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0613403, 2.44051, 0.0300293)
+shape = SubResource("BoxShape3D_svr4v")
+
+[node name="MonsterDetectionArea3d4" parent="Monster2DetectZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.83808)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster2DetectZones/MonsterDetectionArea3d4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0574646, 2.45485, -0.0255127)
+shape = SubResource("BoxShape3D_rhrub")
+
+[node name="Monster3DetectZones" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0438, 0, 40.3321)
+
+[node name="MonsterDetectionArea3d" parent="Monster3DetectZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster3DetectZones/MonsterDetectionArea3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.967346, 2.4352, 0.81897)
+shape = SubResource("BoxShape3D_rpb7y")
+
+[node name="MonsterDetectionArea3d2" parent="Monster3DetectZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10526, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Monster3DetectZones/MonsterDetectionArea3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0432129, 2.37562, 0.585938)
+shape = SubResource("BoxShape3D_v41pm")
+
+[node name="MonsterDetectionArea3d3" parent="Monster3DetectZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.8376)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster3DetectZones/MonsterDetectionArea3d3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.905212, 2.41878, -0.083374)
+shape = SubResource("BoxShape3D_pln1e")
+
+[node name="MonsterDetectionArea3d4" parent="Monster3DetectZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.31963)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster3DetectZones/MonsterDetectionArea3d4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.932556, 2.41396, -0.0357361)
+shape = SubResource("BoxShape3D_u1tnt")
+
+[node name="MonsterDetectionArea3d3" parent="." instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2817, 0, -44.8462)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MonsterDetectionArea3d3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.800903, 2.37421, -0.0383911)
+shape = SubResource("BoxShape3D_afwxg")
+
+[node name="Monster5DetecZones" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90979, 0, -34.3322)
+
+[node name="MonsterDetectionArea3d" parent="Monster5DetecZones" instance=ExtResource("16_s0xcq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster5DetecZones/MonsterDetectionArea3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144684, 2.32305, -0.617371)
+shape = SubResource("BoxShape3D_hl4sc")
+
+[node name="MonsterDetectionArea3d2" parent="Monster5DetecZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.52013, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster5DetecZones/MonsterDetectionArea3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56522, 2.39002, -0.565674)
+shape = SubResource("BoxShape3D_data3")
+
+[node name="MonsterDetectionArea3d3" parent="Monster5DetecZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4778, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster5DetecZones/MonsterDetectionArea3d3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36681, 2.28039, 0.507721)
+shape = SubResource("BoxShape3D_f43k1")
+
+[node name="MonsterDetectionArea3d4" parent="Monster5DetecZones" instance=ExtResource("16_s0xcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03648, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster5DetecZones/MonsterDetectionArea3d4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80229, 2.27238, -0.523869)
+shape = SubResource("BoxShape3D_iixoo")
 
 [connection signal="code_correct" from="SpawnPuzzle" to="SpawnDoor" method="_on_puzzle_solved"]
 [connection signal="code_correct" from="LeverPuzzle01" to="Door01" method="_on_puzzle_solved"]

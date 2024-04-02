@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckxf8te3b0pna"]
+
+[ext_resource type="Script" path="res://characters/monster/MonsterDetectionArea3D.gd" id="1_o03v8"]
+
+[node name="MonsterDetectionArea3d" type="Area3D"]
+collision_mask = 524289
+script = ExtResource("1_o03v8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
