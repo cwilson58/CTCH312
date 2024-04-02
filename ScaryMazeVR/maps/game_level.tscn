@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://bug6eo7vienko" path="res://characters/monster.tscn" id="6_rclpb"]
 [ext_resource type="Script" path="res://maps/PathFollow3D02.gd" id="7_mgbmg"]
 [ext_resource type="PackedScene" uid="uid://bx36jqdjeg750" path="res://LeverPuzzle.tscn" id="8_v1rri"]
-[ext_resource type="PackedScene" uid="uid://bolsy0muwtool" path="res://interactables/door.tscn" id="9_urgb1"]
+[ext_resource type="PackedScene" path="res://interactables/door.tscn" id="9_urgb1"]
 [ext_resource type="PackedScene" uid="uid://dlv8l2wvxnp78" path="res://interactables/chest.tscn" id="10_80pdf"]
 [ext_resource type="PackedScene" uid="uid://cn2gt31383ctp" path="res://lightingNodes/torch.tscn" id="11_w6cq1"]
 [ext_resource type="PackedScene" uid="uid://dgxiwyc7so4s" path="res://lightingNodes/candle.tscn" id="12_lo2v5"]
 [ext_resource type="PackedScene" uid="uid://b7pjbode06apm" path="res://interactables/torchHolder.tscn" id="13_0mioy"]
 [ext_resource type="PackedScene" uid="uid://cn5x5nkuvytc0" path="res://interactables/torchHeld.tscn" id="14_2d2pc"]
-[ext_resource type="PackedScene" uid="uid://bludqdyo1l04u" path="res://characters/SkinReaver.tscn" id="15_hjm8g"]
+[ext_resource type="PackedScene" path="res://characters/SkinReaver.tscn" id="15_hjm8g"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bysir"]
 material = ExtResource("1_c0wjs")
