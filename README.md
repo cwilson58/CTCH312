@@ -48,4 +48,4 @@ At the end, you are given a choice that will each give you their own voice line.
 ### Voice Acting
 [Michael Osachoff](https://github.com/MichaelOsachoff)
 
-Cameron Wilson
+[Cameron Wilson](https://github.com/cwilson58)
